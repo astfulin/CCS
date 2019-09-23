@@ -60,9 +60,9 @@ double us_dollar_er = 1.5345;
 #else
 double euro_er = 1.098;
 #endif
-// visionmc shanghai
+
 struct customer_info customer;
-//  1111111111111111111111111111
+
 fruit const most_healthiest = melon;
 fruit const least_healthiest = pear;
 const fruit* health;
@@ -496,7 +496,7 @@ int write_price_list (FILE *fp)
 #endif
 
   fprintf (fp,"Greengrocers Price List\n\n");
-  fprintf (fp,"FRUIT      PRICE(£)\n");
+  fprintf (fp,"FRUIT      PRICE(�)\n");
   for (i=0;i<MAX_FRUIT;i++)
   {
     fprintf (fp,"%-10s %.2f\n",
