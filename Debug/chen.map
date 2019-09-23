@@ -1,7 +1,7 @@
 ******************************************************************************
                TMS320C6x Linker PC v8.2.4                      
 ******************************************************************************
->> Linked Mon Sep 23 09:01:57 2019
+>> Linked Mon Sep 23 14:12:20 2019
 
 OUTPUT FILE NAME:   <chen.out>
 ENTRY POINT SYMBOL: "_c_int00"  address: 007e7360
@@ -12,7 +12,7 @@ MEMORY CONFIGURATION
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
   L2SRAM_UMAP1          007e0000   00020000  00007a00  00018600  RWIX
-  L2SRAM_UMAP0          00800000   00020000  000019a8  0001e658  RWIX
+  L2SRAM_UMAP0          00800000   00020000  000019ac  0001e654  RWIX
   L3SRAM                20000000   000a0000  00000000  000a0000  RWIX
   HSRAM                 21080000   00008000  00000000  00008000  RWIX
 
@@ -27,12 +27,8 @@ run origin  load origin   length   init length attrs members
   00800000    00800000    00000800   00000000    rw- .stack
   00800800    00800800    00000800   00000000    rw- .sysmem
   00801000    00801000    00000358   00000000    rw- .fardata
-00801358    00801358    00000104   00000104    r--
-  00801358    00801358    00000104   00000104    r-- .const.1
-0080145c    0080145c    00000004   00000000    rw-
-  0080145c    0080145c    00000004   00000000    rw- .bss
-00801460    00801460    00000128   00000128    r--
-  00801460    00801460    00000128   00000128    r-- .const.2
+00801358    00801358    00000230   00000230    r--
+  00801358    00801358    00000230   00000230    r-- .const
 00801588    00801588    00000278   00000000    rw-
   00801588    00801588    00000158   00000000    rw- .far
   008016e0    008016e0    00000120   00000000    rw- .cio
@@ -42,8 +38,10 @@ run origin  load origin   length   init length attrs members
   00801888    00801888    00000008   00000000    rw- .neardata
 00801890    00801890    00000008   00000000    r--
   00801890    00801890    00000008   00000000    r-- .rodata
-00801898    00801898    00000110   00000110    r--
-  00801898    00801898    00000110   00000110    r-- .cinit
+00801898    00801898    00000004   00000000    rw-
+  00801898    00801898    00000004   00000000    rw- .bss
+008018a0    008018a0    00000110   00000110    r--
+  008018a0    008018a0    00000110   00000110    r-- .cinit
 
 
 SECTION ALLOCATION MAP
@@ -138,9 +136,6 @@ section   page    origin      length       input sections
                   00800800    00000008     rts6740_elf.lib : memory.obj (.sysmem)
                   00800808    000007f8     --HOLE--
 
-.bss       0    0080145c    00000004     UNINITIALIZED
-                  0080145c    00000004     (.common:health)
-
 .far       0    00801588    00000158     UNINITIALIZED
                   00801588    00000140     (.common:__TI_tmpnams)
                   008016c8    00000010     (.common:customer)
@@ -156,16 +151,19 @@ section   page    origin      length       input sections
 .rodata    0    00801890    00000008     UNINITIALIZED
                   00801890    00000008     Ggrocers.obj (.rodata)
 
-.cinit     0    00801898    00000110     
-                  00801898    000000aa     (.cinit..fardata.load) [load image, compression = rle]
-                  00801942    0000000e     (.cinit..neardata.load) [load image, compression = rle]
-                  00801950    0000000e     (.cinit..rodata.load) [load image, compression = rle]
-                  0080195e    0000000b     (.cinit..far.load) [load image, compression = rle]
-                  00801969    00000009     (.cinit..bss.load) [load image, compression = rle]
-                  00801972    00000002     --HOLE-- [fill = 0]
-                  00801974    00000008     (__TI_handler_table)
-                  0080197c    00000004     --HOLE-- [fill = 0]
-                  00801980    00000028     (__TI_cinit_table)
+.bss       0    00801898    00000004     UNINITIALIZED
+                  00801898    00000004     (.common:health)
+
+.cinit     0    008018a0    00000110     
+                  008018a0    000000aa     (.cinit..fardata.load) [load image, compression = rle]
+                  0080194a    0000000e     (.cinit..neardata.load) [load image, compression = rle]
+                  00801958    0000000e     (.cinit..rodata.load) [load image, compression = rle]
+                  00801966    0000000b     (.cinit..far.load) [load image, compression = rle]
+                  00801971    00000009     (.cinit..bss.load) [load image, compression = rle]
+                  0080197a    00000002     --HOLE-- [fill = 0]
+                  0080197c    00000008     (__TI_handler_table)
+                  00801984    00000004     --HOLE-- [fill = 0]
+                  00801988    00000028     (__TI_cinit_table)
 
 .fardata   0    00801000    00000358     UNINITIALIZED
                   00801000    000001e0     rts6740_elf.lib : defs.obj (.fardata:_ftable)
@@ -180,10 +178,8 @@ section   page    origin      length       input sections
                   00801350    00000004                     : defs.obj (.fardata)
                   00801354    00000004                     : errno.obj (.fardata)
 
-.const.1   0    00801358    00000104     
-                  00801358    00000104     Ggrocers.obj (.const:.string)
-
-.const.2   0    00801460    00000128     
+.const     0    00801358    00000230     
+                  00801358    00000108     Ggrocers.obj (.const:.string)
                   00801460    00000101     rts6740_elf.lib : ctype.obj (.const:.string:_ctypes_)
                   00801561    00000003     --HOLE-- [fill = 0]
                   00801564    00000024                     : _printfi.obj (.const:.string)
@@ -197,9 +193,9 @@ MODULE SUMMARY
        Module                     code    ro data   rw data
        ------                     ----    -------   -------
     .\
-       Ggrocers.obj               2208    348       88     
+       Ggrocers.obj               2208    352       88     
     +--+--------------------------+-------+---------+---------+
-       Total:                     2208    348       88     
+       Total:                     2208    352       88     
                                                            
     C:\ti\ccsv8\tools\compiler\ti-cgt-c6000_8.2.4\lib\rts6740_elf.lib
        _printfi.obj               13504   92        0      
@@ -262,22 +258,22 @@ MODULE SUMMARY
        Stack:                     0       0         2048   
        Linker Generated:          0       266       0      
     +--+--------------------------+-------+---------+---------+
-       Grand Total:               31232   963       5596   
+       Grand Total:               31232   967       5596   
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 00801980 records: 5, size/record: 8, table size: 40
-	.fardata: load addr=00801898, load size=000000aa bytes, run addr=00801000, run size=00000358 bytes, compression=rle
-	.neardata: load addr=00801942, load size=0000000e bytes, run addr=00801888, run size=00000008 bytes, compression=rle
-	.rodata: load addr=00801950, load size=0000000e bytes, run addr=00801890, run size=00000008 bytes, compression=rle
-	.far: load addr=0080195e, load size=0000000b bytes, run addr=00801588, run size=00000158 bytes, compression=rle
-	.bss: load addr=00801969, load size=00000009 bytes, run addr=0080145c, run size=00000004 bytes, compression=rle
+__TI_cinit_table @ 00801988 records: 5, size/record: 8, table size: 40
+	.fardata: load addr=008018a0, load size=000000aa bytes, run addr=00801000, run size=00000358 bytes, compression=rle
+	.neardata: load addr=0080194a, load size=0000000e bytes, run addr=00801888, run size=00000008 bytes, compression=rle
+	.rodata: load addr=00801958, load size=0000000e bytes, run addr=00801890, run size=00000008 bytes, compression=rle
+	.far: load addr=00801966, load size=0000000b bytes, run addr=00801588, run size=00000158 bytes, compression=rle
+	.bss: load addr=00801971, load size=00000009 bytes, run addr=00801898, run size=00000004 bytes, compression=rle
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 00801974 records: 2, size/record: 4, table size: 8
+__TI_handler_table @ 0080197c records: 2, size/record: 4, table size: 8
 	index: 0, handler: __TI_decompress_rle24
 	index: 1, handler: __TI_decompress_none
 
@@ -296,15 +292,15 @@ address   name
 007e6ac0  HOSTunlink                          
 007e64c0  HOSTwrite                           
 008016e0  __CIOBUF_                           
-00801980  __TI_CINIT_Base                     
-008019a8  __TI_CINIT_Limit                    
-00801974  __TI_Handler_Table_Base             
-0080197c  __TI_Handler_Table_Limit            
+00801988  __TI_CINIT_Base                     
+008019b0  __TI_CINIT_Limit                    
+0080197c  __TI_Handler_Table_Base             
+00801984  __TI_Handler_Table_Limit            
 UNDEFED   __TI_INITARRAY_Base                 
 UNDEFED   __TI_INITARRAY_Limit                
 00800800  __TI_STACK_END                      
 00000800  __TI_STACK_SIZE                     
-0080145c  __TI_STATIC_BASE                    
+00801888  __TI_STATIC_BASE                    
 00000800  __TI_SYSMEM_SIZE                    
 UNDEFED   __TI_TLS_INIT_Base                  
 UNDEFED   __TI_TLS_INIT_Limit                 
@@ -387,7 +383,7 @@ ffffffff  binit
 007e2184  get_favourite_fruit_price           
 007e1d94  get_number_of_pence                 
 007e5ba0  getdevice                           
-0080145c  health                              
+00801898  health                              
 007e21ac  how_many_favourite_fruit            
 007e1ce0  initialise_customer                 
 007e5600  ldexp                               
@@ -522,20 +518,20 @@ address   name
 00801350  __TI_ft_end                         
 00801354  __errno                             
 00801354  errno                               
-0080145c  __TI_STATIC_BASE                    
-0080145c  health                              
 00801460  _ctypes_                            
 00801588  __TI_tmpnams                        
 008016c8  customer                            
 008016d8  parmbuf                             
 008016e0  __CIOBUF_                           
+00801888  __TI_STATIC_BASE                    
 00801888  us_dollar_er                        
 00801890  most_healthiest                     
 00801894  least_healthiest                    
-00801974  __TI_Handler_Table_Base             
-0080197c  __TI_Handler_Table_Limit            
-00801980  __TI_CINIT_Base                     
-008019a8  __TI_CINIT_Limit                    
+00801898  health                              
+0080197c  __TI_Handler_Table_Base             
+00801984  __TI_Handler_Table_Limit            
+00801988  __TI_CINIT_Base                     
+008019b0  __TI_CINIT_Limit                    
 ffffffff  __TI_pprof_out_hndl                 
 ffffffff  __TI_prof_data_size                 
 ffffffff  __TI_prof_data_start                
