@@ -1,18 +1,18 @@
 ******************************************************************************
                TMS320C6x Linker PC v8.2.4                      
 ******************************************************************************
->> Linked Fri Sep 20 11:07:12 2019
+>> Linked Mon Sep 23 09:01:57 2019
 
 OUTPUT FILE NAME:   <chen.out>
-ENTRY POINT SYMBOL: "_c_int00"  address: 007e8b20
+ENTRY POINT SYMBOL: "_c_int00"  address: 007e7360
 
 
 MEMORY CONFIGURATION
 
          name            origin    length      used     unused   attr    fill
 ----------------------  --------  ---------  --------  --------  ----  --------
-  L2SRAM_UMAP1          007e0000   00020000  00009380  00016c80  RWIX
-  L2SRAM_UMAP0          00800000   00020000  00001ce7  0001e319  RWIX
+  L2SRAM_UMAP1          007e0000   00020000  00007a00  00018600  RWIX
+  L2SRAM_UMAP0          00800000   00020000  000019a8  0001e658  RWIX
   L3SRAM                20000000   000a0000  00000000  000a0000  RWIX
   HSRAM                 21080000   00008000  00000000  00008000  RWIX
 
@@ -21,27 +21,29 @@ SEGMENT ALLOCATION MAP
 
 run origin  load origin   length   init length attrs members
 ----------  ----------- ---------- ----------- ----- -------
-007e0000    007e0000    00009380   00009380    r-x
-  007e0000    007e0000    00009380   00009380    r-x .text
-00800000    00800000    00001000   00000000    rw-
+007e0000    007e0000    00007a00   00007a00    r-x
+  007e0000    007e0000    00007a00   00007a00    r-x .text
+00800000    00800000    00001358   00000000    rw-
   00800000    00800000    00000800   00000000    rw- .stack
   00800800    00800800    00000800   00000000    rw- .sysmem
-00801000    00801000    000003b0   000003b0    r--
-  00801000    00801000    000003b0   000003b0    r-- .const
-008013b0    008013b0    00000798   00000000    rw-
-  008013b0    008013b0    0000032c   00000000    rw- .fardata
-  008016e0    008016e0    00000348   00000000    rw- .far
-  00801a28    00801a28    00000120   00000000    rw- .cio
-00801b48    00801b48    0000004c   0000004c    r--
-  00801b48    00801b48    0000004c   0000004c    r-- .switch
-00801b94    00801b94    00000044   00000000    rw-
-  00801b94    00801b94    00000044   00000000    rw- .neardata
-00801bd8    00801bd8    00000014   00000000    r--
-  00801bd8    00801bd8    00000014   00000000    r-- .rodata
-00801bec    00801bec    0000000f   00000000    rw-
-  00801bec    00801bec    0000000f   00000000    rw- .bss
-00801c00    00801c00    000000f0   000000f0    r--
-  00801c00    00801c00    000000f0   000000f0    r-- .cinit
+  00801000    00801000    00000358   00000000    rw- .fardata
+00801358    00801358    00000104   00000104    r--
+  00801358    00801358    00000104   00000104    r-- .const.1
+0080145c    0080145c    00000004   00000000    rw-
+  0080145c    0080145c    00000004   00000000    rw- .bss
+00801460    00801460    00000128   00000128    r--
+  00801460    00801460    00000128   00000128    r-- .const.2
+00801588    00801588    00000278   00000000    rw-
+  00801588    00801588    00000158   00000000    rw- .far
+  008016e0    008016e0    00000120   00000000    rw- .cio
+00801800    00801800    00000088   00000088    r--
+  00801800    00801800    00000088   00000088    r-- .switch
+00801888    00801888    00000008   00000000    rw-
+  00801888    00801888    00000008   00000000    rw- .neardata
+00801890    00801890    00000008   00000000    r--
+  00801890    00801890    00000008   00000000    r-- .rodata
+00801898    00801898    00000110   00000110    r--
+  00801898    00801898    00000110   00000110    r-- .cinit
 
 
 SECTION ALLOCATION MAP
@@ -51,95 +53,82 @@ section   page    origin      length       input sections
 --------  ----  ----------  ----------   ----------------
 .vecs      0    007e0000    00000000     UNINITIALIZED
 
-.text      0    007e0000    00009380     
+.text      0    007e0000    00007a00     
                   007e0000    00001ce0     rts6740_elf.lib : _printfi.obj (.text:__TI_printfi)
-                  007e1ce0    000017a0     s_3.obj (.text)
-                  007e3480    00000680     rts6740_elf.lib : _printfi.obj (.text:_pconv_a)
-                  007e3b00    000005c0                     : divd.obj (.text:__c6xabi_divd)
-                  007e40c0    00000500                     : _printfi.obj (.text:_pconv_g)
-                  007e45c0    00000440                     : memory.obj (.text:free)
-                  007e4a00    00000420                     : _printfi.obj (.text:_pconv_e)
-                  007e4e20    000003e0                     : fputs.obj (.text:fputs)
-                  007e5200    000002a0                     : _printfi.obj (.text:_pconv_f)
-                  007e54a0    000002a0                     : _printfi.obj (.text:fcvt)
-                  007e5740    00000260                     : imath64.obj (.text:__c6xabi_divull)
-                  007e59a0    00000220                     : fputc.obj (.text:fputc)
-                  007e5bc0    00000220                     : open.obj (.text:open)
-                  007e5de0    00000220                     : setvbuf.obj (.text:setvbuf)
-                  007e6000    00000200                     : _printfi.obj (.text:_ltostr)
-                  007e6200    000001e0                     : fopen.obj (.text:_openfile)
-                  007e63e0    000001c0                     : imath40.obj (.text:__c6xabi_divul)
-                  007e65a0    000001c0                     : frexp.obj (.text:frexp)
-                  007e6760    000001a0                     : hostrename.obj (.text:HOSTrename)
-                  007e6900    00000180                     : ldexp.obj (.text:ldexp)
-                  007e6a80    00000180                     : memory.obj (.text:malloc)
-                  007e6c00    00000160                     : autoinit.obj (.text:_auto_init_elf)
-                  007e6d60    00000140                     : _bufread.obj (.text:__TI_buff_read)
-                  007e6ea0    00000140                     : fclose.obj (.text:__TI_closefile)
-                  007e6fe0    00000140                     : fflush.obj (.text:fflush)
-                  007e7120    00000140                     : fgetc.obj (.text:fgetc)
-                  007e7260    00000140                     : fopen.obj (.text:fopen)
-                  007e73a0    00000140                     : getdevice.obj (.text:getdevice)
-                  007e74e0    00000120                     : fseek.obj (.text:fseek)
-                  007e7600    00000100                     : copy_decompress_rle.obj (.text:__TI_decompress_rle_core)
-                  007e7700    00000100                     : _io_perm.obj (.text:__TI_wrt_ok)
-                  007e7800    00000100                     : atoi.obj (.text:atoi)
-                  007e7900    00000100                     : cpy_tbl.obj (.text:copy_in)
-                  007e7a00    00000100                     : fprintf.obj (.text:fprintf)
-                  007e7b00    000000e0                     : hostlseek.obj (.text:HOSTlseek)
-                  007e7be0    000000e0                     : hostopen.obj (.text:HOSTopen)
-                  007e7cc0    000000e0                     : hostwrite.obj (.text:HOSTwrite)
-                  007e7da0    000000e0                     : close.obj (.text:close)
-                  007e7e80    000000e0                     : exit.obj (.text:exit)
-                  007e7f60    000000e0                     : ltoa.obj (.text:ltoa)
-                  007e8040    000000e0                     : memset.obj (.text:memset)
-                  007e8120    000000c0                     : hostread.obj (.text:HOSTread)
-                  007e81e0    000000c0                     : hostunlink.obj (.text:HOSTunlink)
-                  007e82a0    000000c0                     : fflush.obj (.text:__TI_doflush)
-                  007e8360    000000c0                     : divu.obj (.text:__divu)
-                  007e8420    000000c0                     : _printfi.obj (.text:_ecpy)
-                  007e84e0    000000c0                     : memory.obj (.text:mremove)
-                  007e85a0    000000c0                     : tls.obj (.text:tls:init:__TI_tls_init)
-                  007e8660    000000a0                     : hostclose.obj (.text:HOSTclose)
-                  007e8700    000000a0                     : fopen.obj (.text:__TI_cleanup)
-                  007e87a0    000000a0                     : _io_perm.obj (.text:__TI_rd_ok)
-                  007e8840    000000a0                     : memory.obj (.text:_minit)
-                  007e88e0    000000a0                     : memcpy64.obj (.text:memcpy)
-                  007e8980    000000a0                     : memory.obj (.text:minsert)
-                  007e8a20    00000080                     : trgmsg.obj (.text:__TI_readmsg)
-                  007e8aa0    00000080                     : llshift.obj (.text:__c6xabi_llshl)
-                  007e8b20    00000080                     : boot.obj (.text:_c_int00)
-                  007e8ba0    00000080                     : fclose.obj (.text:fclose)
-                  007e8c20    00000080                     : getdevice.obj (.text:finddevice)
-                  007e8ca0    00000080                     : unlink.obj (.text:unlink)
-                  007e8d20    00000060                     : trgmsg.obj (.text:__TI_writemsg)
-                  007e8d80    00000060                     : llshift.obj (.text:__c6xabi_llshru)
-                  007e8de0    00000060                     : imath64.obj (.text:_subcull)
-                  007e8e40    00000060                     : lseek.obj (.text:lseek)
-                  007e8ea0    00000060                     : memccpy.obj (.text:memccpy)
-                  007e8f00    00000060                     : read.obj (.text:read)
-                  007e8f60    00000060                     : sprintf.obj (.text:sprintf)
-                  007e8fc0    00000060                     : write.obj (.text:write)
-                  007e9020    00000040                     : frcmpyd_div.obj (.text:__TI_frcmpyd_div)
-                  007e9060    00000040                     : isinf.obj (.text:__c6xabi_isinf)
-                  007e90a0    00000040                     : _printfi.obj (.text:__c6xabi_isnan)
-                  007e90e0    00000040                     : args_main.obj (.text:_args_main)
-                  007e9120    00000040                     : sprintf.obj (.text:_outs)
-                  007e9160    00000040                     : vsprintf.obj (.text:_outs)
-                  007e91a0    00000040                     : vsprintf.obj (.text:vsprintf)
-                  007e91e0    00000020                     : errno.obj (.text:__c6xabi_errno_addr)
-                  007e9200    00000020                     : _lock.obj (.text:_nop)
-                  007e9220    00000020                     : fprintf.obj (.text:_outc)
-                  007e9240    00000020                     : sprintf.obj (.text:_outc)
-                  007e9260    00000020                     : vsprintf.obj (.text:_outc)
-                  007e9280    00000020                     : fprintf.obj (.text:_outs)
-                  007e92a0    00000020                     : startup.obj (.text:_system_post_cinit)
-                  007e92c0    00000020                     : pre_init.obj (.text:_system_pre_init)
-                  007e92e0    00000020                     : exit.obj (.text:abort)
-                  007e9300    00000020                     : copy_decompress_none.obj (.text:decompress:none:__TI_decompress_none)
-                  007e9320    00000020                     : copy_decompress_rle.obj (.text:decompress:rle24:__TI_decompress_rle24)
-                  007e9340    00000020                     : isprint.obj (.text:isprint)
-                  007e9360    00000020                     : isspace.obj (.text:isspace)
+                  007e1ce0    000008a0     Ggrocers.obj (.text)
+                  007e2580    00000680     rts6740_elf.lib : _printfi.obj (.text:_pconv_a)
+                  007e2c00    000005c0                     : divd.obj (.text:__c6xabi_divd)
+                  007e31c0    00000500                     : _printfi.obj (.text:_pconv_g)
+                  007e36c0    00000440                     : memory.obj (.text:free)
+                  007e3b00    00000420                     : _printfi.obj (.text:_pconv_e)
+                  007e3f20    000003e0                     : fputs.obj (.text:fputs)
+                  007e4300    000002a0                     : _printfi.obj (.text:_pconv_f)
+                  007e45a0    000002a0                     : _printfi.obj (.text:fcvt)
+                  007e4840    00000260                     : imath64.obj (.text:__c6xabi_divull)
+                  007e4aa0    00000220                     : fputc.obj (.text:fputc)
+                  007e4cc0    00000220                     : setvbuf.obj (.text:setvbuf)
+                  007e4ee0    00000200                     : _printfi.obj (.text:_ltostr)
+                  007e50e0    000001c0                     : imath40.obj (.text:__c6xabi_divul)
+                  007e52a0    000001c0                     : frexp.obj (.text:frexp)
+                  007e5460    000001a0                     : hostrename.obj (.text:HOSTrename)
+                  007e5600    00000180                     : ldexp.obj (.text:ldexp)
+                  007e5780    00000180                     : memory.obj (.text:malloc)
+                  007e5900    00000160                     : autoinit.obj (.text:_auto_init_elf)
+                  007e5a60    00000140                     : fclose.obj (.text:__TI_closefile)
+                  007e5ba0    00000140                     : getdevice.obj (.text:getdevice)
+                  007e5ce0    00000120                     : fseek.obj (.text:fseek)
+                  007e5e00    00000100                     : copy_decompress_rle.obj (.text:__TI_decompress_rle_core)
+                  007e5f00    00000100                     : _io_perm.obj (.text:__TI_wrt_ok)
+                  007e6000    00000100                     : atoi.obj (.text:atoi)
+                  007e6100    00000100                     : cpy_tbl.obj (.text:copy_in)
+                  007e6200    00000100                     : fprintf.obj (.text:fprintf)
+                  007e6300    000000e0                     : hostlseek.obj (.text:HOSTlseek)
+                  007e63e0    000000e0                     : hostopen.obj (.text:HOSTopen)
+                  007e64c0    000000e0                     : hostwrite.obj (.text:HOSTwrite)
+                  007e65a0    000000e0                     : close.obj (.text:close)
+                  007e6680    000000e0                     : exit.obj (.text:exit)
+                  007e6760    000000e0                     : ltoa.obj (.text:ltoa)
+                  007e6840    000000e0                     : memset.obj (.text:memset)
+                  007e6920    000000e0                     : printf.obj (.text:printf)
+                  007e6a00    000000c0                     : hostread.obj (.text:HOSTread)
+                  007e6ac0    000000c0                     : hostunlink.obj (.text:HOSTunlink)
+                  007e6b80    000000c0                     : fflush.obj (.text:__TI_doflush)
+                  007e6c40    000000c0                     : divu.obj (.text:__divu)
+                  007e6d00    000000c0                     : _printfi.obj (.text:_ecpy)
+                  007e6dc0    000000c0                     : memory.obj (.text:mremove)
+                  007e6e80    000000c0                     : tls.obj (.text:tls:init:__TI_tls_init)
+                  007e6f40    000000a0                     : hostclose.obj (.text:HOSTclose)
+                  007e6fe0    000000a0                     : fopen.obj (.text:__TI_cleanup)
+                  007e7080    000000a0                     : memory.obj (.text:_minit)
+                  007e7120    000000a0                     : memcpy64.obj (.text:memcpy)
+                  007e71c0    000000a0                     : memory.obj (.text:minsert)
+                  007e7260    00000080                     : trgmsg.obj (.text:__TI_readmsg)
+                  007e72e0    00000080                     : llshift.obj (.text:__c6xabi_llshl)
+                  007e7360    00000080                     : boot.obj (.text:_c_int00)
+                  007e73e0    00000080                     : fclose.obj (.text:fclose)
+                  007e7460    00000080                     : getdevice.obj (.text:finddevice)
+                  007e74e0    00000080                     : unlink.obj (.text:unlink)
+                  007e7560    00000060                     : trgmsg.obj (.text:__TI_writemsg)
+                  007e75c0    00000060                     : llshift.obj (.text:__c6xabi_llshru)
+                  007e7620    00000060                     : imath64.obj (.text:_subcull)
+                  007e7680    00000060                     : lseek.obj (.text:lseek)
+                  007e76e0    00000060                     : memccpy.obj (.text:memccpy)
+                  007e7740    00000060                     : write.obj (.text:write)
+                  007e77a0    00000040                     : frcmpyd_div.obj (.text:__TI_frcmpyd_div)
+                  007e77e0    00000040                     : isinf.obj (.text:__c6xabi_isinf)
+                  007e7820    00000040                     : _printfi.obj (.text:__c6xabi_isnan)
+                  007e7860    00000040                     : args_main.obj (.text:_args_main)
+                  007e78a0    00000020                     : errno.obj (.text:__c6xabi_errno_addr)
+                  007e78c0    00000020                     : _lock.obj (.text:_nop)
+                  007e78e0    00000020                     : fprintf.obj (.text:_outc)
+                  007e7900    00000020                     : printf.obj (.text:_outc)
+                  007e7920    00000020                     : fprintf.obj (.text:_outs)
+                  007e7940    00000020                     : printf.obj (.text:_outs)
+                  007e7960    00000020                     : startup.obj (.text:_system_post_cinit)
+                  007e7980    00000020                     : pre_init.obj (.text:_system_pre_init)
+                  007e79a0    00000020                     : exit.obj (.text:abort)
+                  007e79c0    00000020                     : copy_decompress_none.obj (.text:decompress:none:__TI_decompress_none)
+                  007e79e0    00000020                     : copy_decompress_rle.obj (.text:decompress:rle24:__TI_decompress_rle24)
 
 .stack     0    00800000    00000800     UNINITIALIZED
                   00800000    00000008     rts6740_elf.lib : boot.obj (.stack)
@@ -149,102 +138,94 @@ section   page    origin      length       input sections
                   00800800    00000008     rts6740_elf.lib : memory.obj (.sysmem)
                   00800808    000007f8     --HOLE--
 
-.const     0    00801000    000003b0     
-                  00801000    00000280     s_3.obj (.const:.string)
-                  00801280    00000101     rts6740_elf.lib : ctype.obj (.const:.string:_ctypes_)
-                  00801381    00000003     --HOLE-- [fill = 0]
-                  00801384    00000024                     : _printfi.obj (.const:.string)
-                  008013a8    00000008     s_3.obj (.const:.string:$P$T0$1)
+.bss       0    0080145c    00000004     UNINITIALIZED
+                  0080145c    00000004     (.common:health)
 
-.far       0    008016e0    00000348     UNINITIALIZED
-                  008016e0    00000200     (.common:testbed_buff)
-                  008018e0    00000140     (.common:__TI_tmpnams)
-                  00801a20    00000008     (.common:parmbuf)
+.far       0    00801588    00000158     UNINITIALIZED
+                  00801588    00000140     (.common:__TI_tmpnams)
+                  008016c8    00000010     (.common:customer)
+                  008016d8    00000008     (.common:parmbuf)
 
-.cio       0    00801a28    00000120     UNINITIALIZED
-                  00801a28    00000120     rts6740_elf.lib : trgmsg.obj (.cio)
+.cio       0    008016e0    00000120     UNINITIALIZED
+                  008016e0    00000120     rts6740_elf.lib : trgmsg.obj (.cio)
 
 .neardata 
-*          0    00801b94    00000044     UNINITIALIZED
-                  00801b94    00000044     s_3.obj (.neardata)
+*          0    00801888    00000008     UNINITIALIZED
+                  00801888    00000008     Ggrocers.obj (.neardata)
 
-.rodata    0    00801bd8    00000014     UNINITIALIZED
-                  00801bd8    00000014     s_3.obj (.rodata)
+.rodata    0    00801890    00000008     UNINITIALIZED
+                  00801890    00000008     Ggrocers.obj (.rodata)
 
-.bss       0    00801bec    0000000f     UNINITIALIZED
-                  00801bec    00000004     s_3.obj (.bss)
-                  00801bf0    00000004     (.common:LDRA_CLOSE_FLAG)
-                  00801bf4    00000004     (.common:testbed_out)
-                  00801bf8    00000002     (.common:tbrun_qq_tc1_return)
-                  00801bfa    00000001     (.common:test11)
+.cinit     0    00801898    00000110     
+                  00801898    000000aa     (.cinit..fardata.load) [load image, compression = rle]
+                  00801942    0000000e     (.cinit..neardata.load) [load image, compression = rle]
+                  00801950    0000000e     (.cinit..rodata.load) [load image, compression = rle]
+                  0080195e    0000000b     (.cinit..far.load) [load image, compression = rle]
+                  00801969    00000009     (.cinit..bss.load) [load image, compression = rle]
+                  00801972    00000002     --HOLE-- [fill = 0]
+                  00801974    00000008     (__TI_handler_table)
+                  0080197c    00000004     --HOLE-- [fill = 0]
+                  00801980    00000028     (__TI_cinit_table)
 
-.cinit     0    00801c00    000000f0     
-                  00801c00    00000072     (.cinit..fardata.load) [load image, compression = rle]
-                  00801c72    0000001f     (.cinit..neardata.load) [load image, compression = rle]
-                  00801c91    00000018     (.cinit..rodata.load) [load image, compression = rle]
-                  00801ca9    0000000b     (.cinit..far.load) [load image, compression = rle]
-                  00801cb4    00000009     (.cinit..bss.load) [load image, compression = rle]
-                  00801cbd    00000003     --HOLE-- [fill = 0]
-                  00801cc0    00000008     (__TI_handler_table)
-                  00801cc8    00000028     (__TI_cinit_table)
+.fardata   0    00801000    00000358     UNINITIALIZED
+                  00801000    000001e0     rts6740_elf.lib : defs.obj (.fardata:_ftable)
+                  008011e0    000000a0                     : write.obj (.fardata:_stream)
+                  00801280    00000078                     : write.obj (.fardata:_device)
+                  008012f8    00000028     Ggrocers.obj (.fardata:fruit_prices)
+                  00801320    00000014     Ggrocers.obj (.fardata:fruit_names)
+                  00801334    0000000c     rts6740_elf.lib : exit.obj (.fardata)
+                  00801340    00000008                     : memory.obj (.fardata)
+                  00801348    00000004                     : _lock.obj (.fardata:_lock)
+                  0080134c    00000004                     : _lock.obj (.fardata:_unlock)
+                  00801350    00000004                     : defs.obj (.fardata)
+                  00801354    00000004                     : errno.obj (.fardata)
 
-.fardata   0    008013b0    0000032c     UNINITIALIZED
-                  008013b0    000001e0     rts6740_elf.lib : defs.obj (.fardata:_ftable)
-                  00801590    000000a0                     : write.obj (.fardata:_stream)
-                  00801630    00000078                     : write.obj (.fardata:_device)
-                  008016a8    0000000c                     : exit.obj (.fardata)
-                  008016b4    00000008                     : memory.obj (.fardata)
-                  008016bc    00000004                     : _lock.obj (.fardata:_lock)
-                  008016c0    00000005     s_3.obj (.fardata:qqqqone)
-                  008016c5    00000003     --HOLE--
-                  008016c8    00000004     rts6740_elf.lib : _lock.obj (.fardata:_unlock)
-                  008016cc    00000004                     : defs.obj (.fardata)
-                  008016d0    00000004                     : errno.obj (.fardata)
-                  008016d4    00000004                     : fopen.obj (.fardata)
-                  008016d8    00000004                     : open.obj (.fardata)
+.const.1   0    00801358    00000104     
+                  00801358    00000104     Ggrocers.obj (.const:.string)
 
-.switch    0    00801b48    0000004c     
-                  00801b48    00000038     rts6740_elf.lib : _printfi.obj (.switch:__TI_printfi)
-                  00801b80    00000014     s_3.obj (.switch:ldra_qq_char_star_convert)
+.const.2   0    00801460    00000128     
+                  00801460    00000101     rts6740_elf.lib : ctype.obj (.const:.string:_ctypes_)
+                  00801561    00000003     --HOLE-- [fill = 0]
+                  00801564    00000024                     : _printfi.obj (.const:.string)
+
+.switch    0    00801800    00000088     
+                  00801800    00000050     Ggrocers.obj (.switch:char_to_fruit)
+                  00801850    00000038     rts6740_elf.lib : _printfi.obj (.switch:__TI_printfi)
 
 MODULE SUMMARY
 
        Module                     code    ro data   rw data
        ------                     ----    -------   -------
     .\
-       s_3.obj                    6048    688       600    
+       Ggrocers.obj               2208    348       88     
     +--+--------------------------+-------+---------+---------+
-       Total:                     6048    688       600    
+       Total:                     2208    348       88     
                                                            
     C:\ti\ccsv8\tools\compiler\ti-cgt-c6000_8.2.4\lib\rts6740_elf.lib
        _printfi.obj               13504   92        0      
        memory.obj                 1984    0         8      
        divd.obj                   1472    0         0      
        fputs.obj                  992     0         0      
-       fopen.obj                  960     0         4      
        defs.obj                   0       0         804    
        imath64.obj                704     0         0      
-       open.obj                   544     0         4      
        fputc.obj                  544     0         0      
        setvbuf.obj                544     0         0      
-       fflush.obj                 512     0         0      
        trgmsg.obj                 224     0         288    
        fclose.obj                 448     0         0      
        frexp.obj                  448     0         0      
        getdevice.obj              448     0         0      
        imath40.obj                448     0         0      
-       _io_perm.obj               416     0         0      
        hostrename.obj             416     0         0      
        ldexp.obj                  384     0         0      
        write.obj                  96      0         280    
        autoinit.obj               352     0         0      
-       _bufread.obj               320     0         0      
-       fgetc.obj                  320     0         0      
        fprintf.obj                320     0         0      
        copy_decompress_rle.obj    288     0         0      
        fseek.obj                  288     0         0      
+       printf.obj                 288     0         0      
        exit.obj                   256     0         12     
        ctype.obj                  0       257       0      
+       _io_perm.obj               256     0         0      
        atoi.obj                   256     0         0      
        cpy_tbl.obj                256     0         0      
        hostopen.obj               224     0         8      
@@ -255,51 +236,48 @@ MODULE SUMMARY
        ltoa.obj                   224     0         0      
        memset.obj                 224     0         0      
        divu.obj                   192     0         0      
+       fflush.obj                 192     0         0      
        hostread.obj               192     0         0      
        hostunlink.obj             192     0         0      
-       sprintf.obj                192     0         0      
        tls.obj                    192     0         0      
+       fopen.obj                  160     0         0      
        hostclose.obj              160     0         0      
        memcpy64.obj               160     0         0      
-       vsprintf.obj               160     0         0      
        boot.obj                   128     0         0      
        unlink.obj                 128     0         0      
        lseek.obj                  96      0         0      
        memccpy.obj                96      0         0      
-       read.obj                   96      0         0      
        args_main.obj              64      0         0      
        frcmpyd_div.obj            64      0         0      
        isinf.obj                  64      0         0      
        _lock.obj                  32      0         8      
        errno.obj                  32      0         4      
        copy_decompress_none.obj   32      0         0      
-       isprint.obj                32      0         0      
-       isspace.obj                32      0         0      
        pre_init.obj               32      0         0      
        startup.obj                32      0         0      
     +--+--------------------------+-------+---------+---------+
-       Total:                     31712   349       1420   
+       Total:                     29024   349       1412   
                                                            
        Heap:                      0       0         2048   
        Stack:                     0       0         2048   
-       Linker Generated:          0       237       0      
+       Linker Generated:          0       266       0      
     +--+--------------------------+-------+---------+---------+
-       Grand Total:               37760   1274      6116   
+       Grand Total:               31232   963       5596   
 
 
 LINKER GENERATED COPY TABLES
 
-__TI_cinit_table @ 00801cc8 records: 5, size/record: 8, table size: 40
-	.fardata: load addr=00801c00, load size=00000072 bytes, run addr=008013b0, run size=0000032c bytes, compression=rle
-	.neardata: load addr=00801c72, load size=0000001f bytes, run addr=00801b94, run size=00000044 bytes, compression=rle
-	.rodata: load addr=00801c91, load size=00000018 bytes, run addr=00801bd8, run size=00000014 bytes, compression=rle
-	.far: load addr=00801ca9, load size=0000000b bytes, run addr=008016e0, run size=00000348 bytes, compression=rle
-	.bss: load addr=00801cb4, load size=00000009 bytes, run addr=00801bec, run size=0000000f bytes, compression=rle
+__TI_cinit_table @ 00801980 records: 5, size/record: 8, table size: 40
+	.fardata: load addr=00801898, load size=000000aa bytes, run addr=00801000, run size=00000358 bytes, compression=rle
+	.neardata: load addr=00801942, load size=0000000e bytes, run addr=00801888, run size=00000008 bytes, compression=rle
+	.rodata: load addr=00801950, load size=0000000e bytes, run addr=00801890, run size=00000008 bytes, compression=rle
+	.far: load addr=0080195e, load size=0000000b bytes, run addr=00801588, run size=00000158 bytes, compression=rle
+	.bss: load addr=00801969, load size=00000009 bytes, run addr=0080145c, run size=00000004 bytes, compression=rle
 
 
 LINKER GENERATED HANDLER TABLE
 
-__TI_handler_table @ 00801cc0 records: 2, size/record: 4, table size: 8
+__TI_handler_table @ 00801974 records: 2, size/record: 4, table size: 8
 	index: 0, handler: __TI_decompress_rle24
 	index: 1, handler: __TI_decompress_none
 
@@ -308,185 +286,133 @@ GLOBAL SYMBOLS: SORTED ALPHABETICALLY BY Name
 
 address   name                                
 -------   ----                                
-007e92e0  C$$EXIT                             
-007e8d78  C$$IO$$                             
-007e8660  HOSTclose                           
-007e7b00  HOSTlseek                           
-007e7be0  HOSTopen                            
-007e8120  HOSTread                            
-007e6760  HOSTrename                          
-007e81e0  HOSTunlink                          
-007e7cc0  HOSTwrite                           
-00801bf0  LDRA_CLOSE_FLAG                     
-00801a28  __CIOBUF_                           
-00801cc8  __TI_CINIT_Base                     
-00801cf0  __TI_CINIT_Limit                    
-00801cc0  __TI_Handler_Table_Base             
-00801cc8  __TI_Handler_Table_Limit            
+007e79a0  C$$EXIT                             
+007e75b8  C$$IO$$                             
+007e6f40  HOSTclose                           
+007e6300  HOSTlseek                           
+007e63e0  HOSTopen                            
+007e6a00  HOSTread                            
+007e5460  HOSTrename                          
+007e6ac0  HOSTunlink                          
+007e64c0  HOSTwrite                           
+008016e0  __CIOBUF_                           
+00801980  __TI_CINIT_Base                     
+008019a8  __TI_CINIT_Limit                    
+00801974  __TI_Handler_Table_Base             
+0080197c  __TI_Handler_Table_Limit            
 UNDEFED   __TI_INITARRAY_Base                 
 UNDEFED   __TI_INITARRAY_Limit                
 00800800  __TI_STACK_END                      
 00000800  __TI_STACK_SIZE                     
-00801b94  __TI_STATIC_BASE                    
+0080145c  __TI_STATIC_BASE                    
 00000800  __TI_SYSMEM_SIZE                    
 UNDEFED   __TI_TLS_INIT_Base                  
 UNDEFED   __TI_TLS_INIT_Limit                 
-007e6d60  __TI_buff_read                      
-007e8700  __TI_cleanup                        
-008016a8  __TI_cleanup_ptr                    
-007e6ea0  __TI_closefile                      
-007e9300  __TI_decompress_none                
-007e9320  __TI_decompress_rle24               
-007e82a0  __TI_doflush                        
-008016ac  __TI_dtors_ptr                      
-008016b0  __TI_enable_exit_profile_output     
-007e9020  __TI_frcmpyd_div                    
-008016cc  __TI_ft_end                         
+007e6fe0  __TI_cleanup                        
+00801334  __TI_cleanup_ptr                    
+007e5a60  __TI_closefile                      
+007e79c0  __TI_decompress_none                
+007e79e0  __TI_decompress_rle24               
+007e6b80  __TI_doflush                        
+00801338  __TI_dtors_ptr                      
+0080133c  __TI_enable_exit_profile_output     
+007e77a0  __TI_frcmpyd_div                    
+00801350  __TI_ft_end                         
 ffffffff  __TI_pprof_out_hndl                 
 007e0000  __TI_printfi                        
 ffffffff  __TI_prof_data_size                 
 ffffffff  __TI_prof_data_start                
-007e87a0  __TI_rd_ok                          
-007e8a20  __TI_readmsg                        
-007e85a0  __TI_tls_init                       
-008018e0  __TI_tmpnams                        
-007e8d20  __TI_writemsg                       
-007e7700  __TI_wrt_ok                         
+007e7260  __TI_readmsg                        
+007e6e80  __TI_tls_init                       
+00801588  __TI_tmpnams                        
+007e7560  __TI_writemsg                       
+007e5f00  __TI_wrt_ok                         
 ffffffff  __binit__                           
-007e3b00  __c6xabi_divd                       
-007e8360  __c6xabi_divu                       
-007e63e0  __c6xabi_divul                      
-007e5740  __c6xabi_divull                     
-007e91e0  __c6xabi_errno_addr                 
-007e9060  __c6xabi_isinf                      
-007e8aa0  __c6xabi_llshl                      
-007e8d80  __c6xabi_llshru                     
+007e2c00  __c6xabi_divd                       
+007e6c40  __c6xabi_divu                       
+007e50e0  __c6xabi_divul                      
+007e4840  __c6xabi_divull                     
+007e78a0  __c6xabi_errno_addr                 
+007e77e0  __c6xabi_isinf                      
+007e72e0  __c6xabi_llshl                      
+007e75c0  __c6xabi_llshru                     
 ffffffff  __c_args__                          
-007e8360  __divu                              
-008016d0  __errno                             
-007e90e0  _args_main                          
-007e6c00  _auto_init_elf                      
-007e8b20  _c_int00                            
-00801280  _ctypes_                            
-00801630  _device                             
-008013b0  _ftable                             
-008016bc  _lock                               
-007e8840  _minit                              
-007e9200  _nop                                
+007e6c40  __divu                              
+00801354  __errno                             
+007e7860  _args_main                          
+007e5900  _auto_init_elf                      
+007e7360  _c_int00                            
+00801460  _ctypes_                            
+00801280  _device                             
+00801000  _ftable                             
+00801348  _lock                               
+007e7080  _minit                              
+007e78c0  _nop                                
 00800000  _stack                              
-00801590  _stream                             
-007e8de0  _subcull                            
+008011e0  _stream                             
+007e7620  _subcull                            
 00800800  _sys_memory                         
-007e92a0  _system_post_cinit                  
-007e92c0  _system_pre_init                    
-008016c8  _unlock                             
-007e92e0  abort                               
-007e7800  atoi                                
+007e7960  _system_post_cinit                  
+007e7980  _system_pre_init                    
+0080134c  _unlock                             
+007e79a0  abort                               
+007e6000  atoi                                
 ffffffff  binit                               
-007e7da0  close                               
-007e7900  copy_in                             
-008016d0  errno                               
-007e7e80  exit                                
-007e8ba0  fclose                              
-007e6fe0  fflush                              
-007e7120  fgetc                               
-007e8c20  finddevice                          
-007e7260  fopen                               
-007e7a00  fprintf                             
-007e59a0  fputc                               
-007e4e20  fputs                               
-007e45c0  free                                
-007e65a0  frexp                               
-007e65a0  frexpl                              
-007e74e0  fseek                               
-007e1ce0  getDopplerIdxState                  
-007e7120  getc                                
-007e73a0  getdevice                           
-00801bd0  inszt_confirm_enabled               
-007e9340  isprint                             
-007e9360  isspace                             
-007e6900  ldexp                               
-007e6900  ldexpl                              
-00801bcc  ldra_qq_action_code                 
-007e2014  ldra_qq_char_convert                
-007e20d4  ldra_qq_char_star_convert           
-007e29c8  ldra_qq_confirm_smho                
-007e2be0  ldra_qq_confirm_stub_hit_order      
-007e26e8  ldra_qq_const_string_compare        
-007e240c  ldra_qq_double_convert              
-007e2fec  ldra_qq_etc_completion              
-007e3004  ldra_qq_etc_initialisation          
-007e31b8  ldra_qq_execute_test_case_1         
-007e2734  ldra_qq_file_exact_compare          
-007e2488  ldra_qq_float_convert               
-007e2500  ldra_qq_hex_convert                 
-00801b94  ldra_qq_history_in_target           
-00801bc4  ldra_qq_in_existing_test_case       
-00801bc8  ldra_qq_in_new_test_case            
-00801ba4  ldra_qq_last_test_case              
-007e252c  ldra_qq_long_double_convert         
-007e1ff8  ldra_qq_mem_alloc                   
-00801bb4  ldra_qq_module_name                 
-00801bb0  ldra_qq_module_number               
-007e3060  ldra_qq_ntc_completion              
-007e3078  ldra_qq_ntc_initialisation          
-00801bc0  ldra_qq_number_of_existing_tcs      
-00801bbc  ldra_qq_procedure_name              
-00801bb8  ldra_qq_procedure_number            
-00801b9c  ldra_qq_quiet_stubs                 
-007e2fe4  ldra_qq_sequence_cleanup            
-007e2fd8  ldra_qq_sequence_init               
-00801b98  ldra_qq_sequence_name               
-007e2c74  ldra_qq_set_stub_hit_count          
-007e2af8  ldra_qq_set_stub_hit_order          
-007e2810  ldra_qq_set_stub_smho               
-00801bdc  ldra_qq_smho_executed_correct       
-00801be0  ldra_qq_smho_executed_incorrect     
-00801be4  ldra_qq_smho_hc_terminator          
-00801be8  ldra_qq_smho_tc_terminator          
-00801bd8  ldra_qq_smho_unexecuted             
-007e1f84  ldra_qq_strcat                      
-007e1e48  ldra_qq_strcmp                      
-007e1f28  ldra_qq_strcpy                      
-007e2698  ldra_qq_string_compare              
-007e1ee4  ldra_qq_strlen                      
-007e2cf4  ldra_qq_stub_end                    
-007e2e14  ldra_qq_stub_end_comment            
-007e2f78  ldra_qq_stub_hit_count_comment      
-007e2e54  ldra_qq_stub_hit_count_test         
-007e2e28  ldra_qq_stub_invalid_test           
-007e2cc8  ldra_qq_stub_start                  
-007e2e04  ldra_qq_stub_start_comment          
-007e3100  ldra_qq_tbrun_output                
-00801ba8  ldra_qq_tc_iterator                 
-00801bac  ldra_qq_tc_repeater                 
-00801ba0  ldra_qq_test_case_number            
-007e2d74  ldra_qq_test_comment                
-007e25a8  ldra_qq_unsigned_char_convert       
-007e8e40  lseek                               
-007e7f60  ltoa                                
-007e3438  main                                
-007e6a80  malloc                              
-007e8ea0  memccpy                             
-007e88e0  memcpy                              
-007e8040  memset                              
-007e5bc0  open                                
-00801a20  parmbuf                             
-007e59a0  putc                                
-007e8f00  read                                
-007e8ca0  remove                              
-007e5de0  setvbuf                             
-007e8f60  sprintf                             
-00801bf8  tbrun_qq_tc1_return                 
-00801bfa  test11                              
-008016e0  testbed_buff                        
-00801bf4  testbed_out                         
+007e1e40  buy_fruit                           
+007e1fb0  buy_fruit_ex                        
+007e2344  buy_healthiest                      
+007e208c  calculate_cheapest_fruit            
+007e1fec  change_fruit_price                  
+007e1ecc  char_to_fruit                       
+007e65a0  close                               
+007e1de8  convert_pence                       
+007e6100  copy_in                             
+008016c8  customer                            
+007e1d38  customer_cash_injection             
+00801354  errno                               
+007e6680  exit                                
+007e73e0  fclose                              
+007e7460  finddevice                          
+007e6200  fprintf                             
+007e4aa0  fputc                               
+007e3f20  fputs                               
+007e36c0  free                                
+007e52a0  frexp                               
+007e52a0  frexpl                              
+007e2114  fruit_cheaper_than                  
+00801320  fruit_names                         
+008012f8  fruit_prices                        
+007e5ce0  fseek                               
+007e2160  get_cheapest_fruit                  
+007e2184  get_favourite_fruit_price           
+007e1d94  get_number_of_pence                 
+007e5ba0  getdevice                           
+0080145c  health                              
+007e21ac  how_many_favourite_fruit            
+007e1ce0  initialise_customer                 
+007e5600  ldexp                               
+007e5600  ldexpl                              
+00801894  least_healthiest                    
+007e7680  lseek                               
+007e6760  ltoa                                
+007e23e0  main                                
+007e5780  malloc                              
+007e76e0  memccpy                             
+007e7120  memcpy                              
+007e6840  memset                              
+00801890  most_healthiest                     
+008016d8  parmbuf                             
+007e6920  printf                              
+007e4aa0  putc                                
+007e74e0  remove                              
+007e4cc0  setvbuf                             
 00008000  ti_sysbios_family_c64p_Cache_l1dSize
 00008000  ti_sysbios_family_c64p_Cache_l1pSize
 00000000  ti_sysbios_family_c64p_Cache_l2Size 
-007e8ca0  unlink                              
-007e91a0  vsprintf                            
-007e8fc0  write                               
+007e74e0  unlink                              
+00801888  us_dollar_er                        
+007e7740  write                               
+007e2254  write_price_list                    
 
 
 GLOBAL SYMBOLS: SORTED BY Symbol Address 
@@ -499,169 +425,117 @@ address   name
 00008000  ti_sysbios_family_c64p_Cache_l1dSize
 00008000  ti_sysbios_family_c64p_Cache_l1pSize
 007e0000  __TI_printfi                        
-007e1ce0  getDopplerIdxState                  
-007e1e48  ldra_qq_strcmp                      
-007e1ee4  ldra_qq_strlen                      
-007e1f28  ldra_qq_strcpy                      
-007e1f84  ldra_qq_strcat                      
-007e1ff8  ldra_qq_mem_alloc                   
-007e2014  ldra_qq_char_convert                
-007e20d4  ldra_qq_char_star_convert           
-007e240c  ldra_qq_double_convert              
-007e2488  ldra_qq_float_convert               
-007e2500  ldra_qq_hex_convert                 
-007e252c  ldra_qq_long_double_convert         
-007e25a8  ldra_qq_unsigned_char_convert       
-007e2698  ldra_qq_string_compare              
-007e26e8  ldra_qq_const_string_compare        
-007e2734  ldra_qq_file_exact_compare          
-007e2810  ldra_qq_set_stub_smho               
-007e29c8  ldra_qq_confirm_smho                
-007e2af8  ldra_qq_set_stub_hit_order          
-007e2be0  ldra_qq_confirm_stub_hit_order      
-007e2c74  ldra_qq_set_stub_hit_count          
-007e2cc8  ldra_qq_stub_start                  
-007e2cf4  ldra_qq_stub_end                    
-007e2d74  ldra_qq_test_comment                
-007e2e04  ldra_qq_stub_start_comment          
-007e2e14  ldra_qq_stub_end_comment            
-007e2e28  ldra_qq_stub_invalid_test           
-007e2e54  ldra_qq_stub_hit_count_test         
-007e2f78  ldra_qq_stub_hit_count_comment      
-007e2fd8  ldra_qq_sequence_init               
-007e2fe4  ldra_qq_sequence_cleanup            
-007e2fec  ldra_qq_etc_completion              
-007e3004  ldra_qq_etc_initialisation          
-007e3060  ldra_qq_ntc_completion              
-007e3078  ldra_qq_ntc_initialisation          
-007e3100  ldra_qq_tbrun_output                
-007e31b8  ldra_qq_execute_test_case_1         
-007e3438  main                                
-007e3b00  __c6xabi_divd                       
-007e45c0  free                                
-007e4e20  fputs                               
-007e5740  __c6xabi_divull                     
-007e59a0  fputc                               
-007e59a0  putc                                
-007e5bc0  open                                
-007e5de0  setvbuf                             
-007e63e0  __c6xabi_divul                      
-007e65a0  frexp                               
-007e65a0  frexpl                              
-007e6760  HOSTrename                          
-007e6900  ldexp                               
-007e6900  ldexpl                              
-007e6a80  malloc                              
-007e6c00  _auto_init_elf                      
-007e6d60  __TI_buff_read                      
-007e6ea0  __TI_closefile                      
-007e6fe0  fflush                              
-007e7120  fgetc                               
-007e7120  getc                                
-007e7260  fopen                               
-007e73a0  getdevice                           
-007e74e0  fseek                               
-007e7700  __TI_wrt_ok                         
-007e7800  atoi                                
-007e7900  copy_in                             
-007e7a00  fprintf                             
-007e7b00  HOSTlseek                           
-007e7be0  HOSTopen                            
-007e7cc0  HOSTwrite                           
-007e7da0  close                               
-007e7e80  exit                                
-007e7f60  ltoa                                
-007e8040  memset                              
-007e8120  HOSTread                            
-007e81e0  HOSTunlink                          
-007e82a0  __TI_doflush                        
-007e8360  __c6xabi_divu                       
-007e8360  __divu                              
-007e85a0  __TI_tls_init                       
-007e8660  HOSTclose                           
-007e8700  __TI_cleanup                        
-007e87a0  __TI_rd_ok                          
-007e8840  _minit                              
-007e88e0  memcpy                              
-007e8a20  __TI_readmsg                        
-007e8aa0  __c6xabi_llshl                      
-007e8b20  _c_int00                            
-007e8ba0  fclose                              
-007e8c20  finddevice                          
-007e8ca0  remove                              
-007e8ca0  unlink                              
-007e8d20  __TI_writemsg                       
-007e8d78  C$$IO$$                             
-007e8d80  __c6xabi_llshru                     
-007e8de0  _subcull                            
-007e8e40  lseek                               
-007e8ea0  memccpy                             
-007e8f00  read                                
-007e8f60  sprintf                             
-007e8fc0  write                               
-007e9020  __TI_frcmpyd_div                    
-007e9060  __c6xabi_isinf                      
-007e90e0  _args_main                          
-007e91a0  vsprintf                            
-007e91e0  __c6xabi_errno_addr                 
-007e9200  _nop                                
-007e92a0  _system_post_cinit                  
-007e92c0  _system_pre_init                    
-007e92e0  C$$EXIT                             
-007e92e0  abort                               
-007e9300  __TI_decompress_none                
-007e9320  __TI_decompress_rle24               
-007e9340  isprint                             
-007e9360  isspace                             
+007e1ce0  initialise_customer                 
+007e1d38  customer_cash_injection             
+007e1d94  get_number_of_pence                 
+007e1de8  convert_pence                       
+007e1e40  buy_fruit                           
+007e1ecc  char_to_fruit                       
+007e1fb0  buy_fruit_ex                        
+007e1fec  change_fruit_price                  
+007e208c  calculate_cheapest_fruit            
+007e2114  fruit_cheaper_than                  
+007e2160  get_cheapest_fruit                  
+007e2184  get_favourite_fruit_price           
+007e21ac  how_many_favourite_fruit            
+007e2254  write_price_list                    
+007e2344  buy_healthiest                      
+007e23e0  main                                
+007e2c00  __c6xabi_divd                       
+007e36c0  free                                
+007e3f20  fputs                               
+007e4840  __c6xabi_divull                     
+007e4aa0  fputc                               
+007e4aa0  putc                                
+007e4cc0  setvbuf                             
+007e50e0  __c6xabi_divul                      
+007e52a0  frexp                               
+007e52a0  frexpl                              
+007e5460  HOSTrename                          
+007e5600  ldexp                               
+007e5600  ldexpl                              
+007e5780  malloc                              
+007e5900  _auto_init_elf                      
+007e5a60  __TI_closefile                      
+007e5ba0  getdevice                           
+007e5ce0  fseek                               
+007e5f00  __TI_wrt_ok                         
+007e6000  atoi                                
+007e6100  copy_in                             
+007e6200  fprintf                             
+007e6300  HOSTlseek                           
+007e63e0  HOSTopen                            
+007e64c0  HOSTwrite                           
+007e65a0  close                               
+007e6680  exit                                
+007e6760  ltoa                                
+007e6840  memset                              
+007e6920  printf                              
+007e6a00  HOSTread                            
+007e6ac0  HOSTunlink                          
+007e6b80  __TI_doflush                        
+007e6c40  __c6xabi_divu                       
+007e6c40  __divu                              
+007e6e80  __TI_tls_init                       
+007e6f40  HOSTclose                           
+007e6fe0  __TI_cleanup                        
+007e7080  _minit                              
+007e7120  memcpy                              
+007e7260  __TI_readmsg                        
+007e72e0  __c6xabi_llshl                      
+007e7360  _c_int00                            
+007e73e0  fclose                              
+007e7460  finddevice                          
+007e74e0  remove                              
+007e74e0  unlink                              
+007e7560  __TI_writemsg                       
+007e75b8  C$$IO$$                             
+007e75c0  __c6xabi_llshru                     
+007e7620  _subcull                            
+007e7680  lseek                               
+007e76e0  memccpy                             
+007e7740  write                               
+007e77a0  __TI_frcmpyd_div                    
+007e77e0  __c6xabi_isinf                      
+007e7860  _args_main                          
+007e78a0  __c6xabi_errno_addr                 
+007e78c0  _nop                                
+007e7960  _system_post_cinit                  
+007e7980  _system_pre_init                    
+007e79a0  C$$EXIT                             
+007e79a0  abort                               
+007e79c0  __TI_decompress_none                
+007e79e0  __TI_decompress_rle24               
 00800000  _stack                              
 00800800  __TI_STACK_END                      
 00800800  _sys_memory                         
-00801280  _ctypes_                            
-008013b0  _ftable                             
-00801590  _stream                             
-00801630  _device                             
-008016a8  __TI_cleanup_ptr                    
-008016ac  __TI_dtors_ptr                      
-008016b0  __TI_enable_exit_profile_output     
-008016bc  _lock                               
-008016c8  _unlock                             
-008016cc  __TI_ft_end                         
-008016d0  __errno                             
-008016d0  errno                               
-008016e0  testbed_buff                        
-008018e0  __TI_tmpnams                        
-00801a20  parmbuf                             
-00801a28  __CIOBUF_                           
-00801b94  __TI_STATIC_BASE                    
-00801b94  ldra_qq_history_in_target           
-00801b98  ldra_qq_sequence_name               
-00801b9c  ldra_qq_quiet_stubs                 
-00801ba0  ldra_qq_test_case_number            
-00801ba4  ldra_qq_last_test_case              
-00801ba8  ldra_qq_tc_iterator                 
-00801bac  ldra_qq_tc_repeater                 
-00801bb0  ldra_qq_module_number               
-00801bb4  ldra_qq_module_name                 
-00801bb8  ldra_qq_procedure_number            
-00801bbc  ldra_qq_procedure_name              
-00801bc0  ldra_qq_number_of_existing_tcs      
-00801bc4  ldra_qq_in_existing_test_case       
-00801bc8  ldra_qq_in_new_test_case            
-00801bcc  ldra_qq_action_code                 
-00801bd0  inszt_confirm_enabled               
-00801bd8  ldra_qq_smho_unexecuted             
-00801bdc  ldra_qq_smho_executed_correct       
-00801be0  ldra_qq_smho_executed_incorrect     
-00801be4  ldra_qq_smho_hc_terminator          
-00801be8  ldra_qq_smho_tc_terminator          
-00801bf0  LDRA_CLOSE_FLAG                     
-00801bf4  testbed_out                         
-00801bf8  tbrun_qq_tc1_return                 
-00801bfa  test11                              
-00801cc0  __TI_Handler_Table_Base             
-00801cc8  __TI_CINIT_Base                     
-00801cc8  __TI_Handler_Table_Limit            
-00801cf0  __TI_CINIT_Limit                    
+00801000  _ftable                             
+008011e0  _stream                             
+00801280  _device                             
+008012f8  fruit_prices                        
+00801320  fruit_names                         
+00801334  __TI_cleanup_ptr                    
+00801338  __TI_dtors_ptr                      
+0080133c  __TI_enable_exit_profile_output     
+00801348  _lock                               
+0080134c  _unlock                             
+00801350  __TI_ft_end                         
+00801354  __errno                             
+00801354  errno                               
+0080145c  __TI_STATIC_BASE                    
+0080145c  health                              
+00801460  _ctypes_                            
+00801588  __TI_tmpnams                        
+008016c8  customer                            
+008016d8  parmbuf                             
+008016e0  __CIOBUF_                           
+00801888  us_dollar_er                        
+00801890  most_healthiest                     
+00801894  least_healthiest                    
+00801974  __TI_Handler_Table_Base             
+0080197c  __TI_Handler_Table_Limit            
+00801980  __TI_CINIT_Base                     
+008019a8  __TI_CINIT_Limit                    
 ffffffff  __TI_pprof_out_hndl                 
 ffffffff  __TI_prof_data_size                 
 ffffffff  __TI_prof_data_start                
@@ -673,4 +547,4 @@ UNDEFED   __TI_INITARRAY_Limit
 UNDEFED   __TI_TLS_INIT_Base                  
 UNDEFED   __TI_TLS_INIT_Limit                 
 
-[179 symbols]
+[127 symbols]
